@@ -26,7 +26,7 @@ client.on("connect", () => {
       if (data !== 'Sorry, file does not exist.') { //Error msg sent by Server when there's an error.
         fs.writeFile(`transfer/${answer}`, data, error => { //Client receives the data and the file test.txt gets saved in ./transfer
           if (error) {
-            console.log(`Ooops, something went wrong!`);
+            console.log(`Ooops, something went wrong! Please type a valid file name or extension.`);
             process.exit();
           }
           if (!error) {

@@ -1,13 +1,13 @@
-const net = require("net");
+const net = require('net');
 const fs = require('fs');
 
 const port = 3000;
 const server = net.createServer();
 
-server.on("connection", (client) => {
+server.on('connection', (client) => {
   console.log('New client connected! Hi!');
 
-  client.setEncoding("utf8"); //Interpret data as text
+  client.setEncoding('utf8'); //Interpret data as text.
   
   client.write('File request processing.');
 
@@ -27,16 +27,9 @@ server.on("connection", (client) => {
   });
 
   client.on('end', () => {
-    console.log('Client closed connection.'); //If the Client exits mid request.
+    console.log('Client ended connection.'); //If the Client exits with Ctrl+C mid request.
   });
 
-  client.on('error', error => {
-    console.log(`Error: ${error}`);
-  });
-});
-
-server.on('error', (error) => {
-  throw error;
 });
 
 server.listen(port, () => {
